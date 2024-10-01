@@ -9,6 +9,6 @@ export class GetAllCU {
   }
 
   async execute(): Promise<ResponseRepository<Array<UserEntity>>> {
-    return await this.userRepository.getAll();
+    return await this.userRepository.getList();
   }
 }

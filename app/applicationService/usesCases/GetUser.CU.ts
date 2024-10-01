@@ -9,6 +9,6 @@ export class GetUserCU {
   }
 
   async execute(id: string): Promise<ResponseRepository<UserEntity>> {
-    return await this.userRepository.getUserById(id);
+    return await this.userRepository.getById(id);
   }
 }

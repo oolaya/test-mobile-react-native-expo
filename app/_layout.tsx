@@ -33,6 +33,7 @@ export default function RootLayout() {
         <Stack.Screen name="user1" />
         <Stack.Screen name="User" />
         <Stack.Screen name="post" />
+        <Stack.Screen name="details" />
         <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeProvider>
