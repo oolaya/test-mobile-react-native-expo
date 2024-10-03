@@ -1,5 +1,5 @@
 import { UserServices } from "@/app/applicationService/services/userServices";
-import { GetUserCU } from "@/app/applicationService/usesCases/GetUser.CU";
+import { GetUserCU } from "@/app/applicationService/usesCases/user/GetUser.CU";
 import { UserEntity } from "@/app/domain/entities/User.Entity"
 import { useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState }  from "react"

@@ -2,7 +2,6 @@ import { UserEntity } from "@/app/domain/entities/User.Entity";
 import { ResponseRepository } from "@/app/domain/repositories/response.Repository";
 import { UserRepository } from "@/app/domain/repositories/User.Repository";
 import { ApiDummy } from "@/app/infraestructure/dataSources/apiDummy";
-import { UserApiDT } from "@/app/infraestructure/dataSources/UserApiDT";
 
 export class UserServices implements UserRepository {
   private apiData: ApiDummy<UserEntity>;
