@@ -1,0 +1,32 @@
+import { UserServices } from "@/app/applicationService/services/userServices";
+import { GetUserCU } from "@/app/applicationService/usesCases/user/GetUser.CU";
+import { UserEntity } from "@/app/domain/entities/User.Entity"
+import { useLocalSearchParams } from "expo-router";
+import React, { useEffect, useState }  from "react"
+import { Text, View } from "react-native"
+import { ApiDummy } from "@/app/infraestructure/dataSources/ApiDummy";
+
+const LandingScreen:React.FC=()=>{
+  const {id,q} = useLocalSearchParams(); 
+  const [users, setUsers] = useState<Array<UserEntity>>([]);
+  const getUserByIdCase = new GetUserCU(new UserServices(new ApiDummy<UserEntity>())); 
+  // const getAllCase = new GetAllCU(new UserServices(new UserApiDT())); 
+
+
+  useEffect(()=>{
+    console.log("q ", q); 
+    // let idT:string = id.toString(); 
+    getUserByIdCase.execute("60d0fe4f5311236168a109ca").then(r=>{       
+        console.log("El User", r ); 
+    });  
+  },[]);
+
+
+    return (
+       <View>      
+        <Text>Aqui van los post generales</Text>
+       </View>      
+    )
+}
+
+export default LandingScreen; 
