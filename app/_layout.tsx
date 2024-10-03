@@ -32,7 +32,7 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="user1" />
         <Stack.Screen name="User" />
-        <Stack.Screen name="post" />
+        <Stack.Screen name="Landing" />
         <Stack.Screen name="details" />
         <Stack.Screen name="+not-found" />
       </Stack>
