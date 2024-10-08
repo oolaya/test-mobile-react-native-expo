@@ -6,6 +6,7 @@ import React, { useEffect, useState }  from "react"
 import { Text, View } from "react-native"
 import { ApiDummy } from "@/app/infraestructure/dataSources/ApiDummy";
 import CommentsForm from "../../components/Forms/CommentsForm";
+import CameraP from "../../components/peripherals/Camera.p";
 
 const LandingScreen:React.FC=()=>{
   const {id,q} = useLocalSearchParams(); 
@@ -30,8 +31,10 @@ const LandingScreen:React.FC=()=>{
        <View>      
         <Text>Aqui van los post generales</Text>
         <CommentsForm
-        mimetodo={handleSubmitApi}
+        handleSubmitApi={handleSubmitApi}
         />
+
+        <CameraP></CameraP>
        </View>      
     )
 }
