@@ -5,6 +5,7 @@ import { useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState }  from "react"
 import { Text, View } from "react-native"
 import { ApiDummy } from "@/app/infraestructure/dataSources/ApiDummy";
+import CommentsForm from "../../components/Forms/CommentsForm";
 
 const LandingScreen:React.FC=()=>{
   const {id,q} = useLocalSearchParams(); 
@@ -20,11 +21,17 @@ const LandingScreen:React.FC=()=>{
         console.log("El User", r ); 
     });  
   },[]);
-
+ const handleSubmitApi=(formSend:any)=>{
+   console.log("Paso el formulario ", formSend );
+   alert("ya rettorno los datos y estoy en el padre")
+ }
 
     return (
        <View>      
         <Text>Aqui van los post generales</Text>
+        <CommentsForm
+        mimetodo={handleSubmitApi}
+        />
        </View>      
     )
 }
