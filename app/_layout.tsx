@@ -6,9 +6,11 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { NavigationContainer } from '@react-navigation/native';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -30,12 +32,11 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="user1" />
         <Stack.Screen name="User" />
         <Stack.Screen name="Landing" />
         <Stack.Screen name="details" />
         <Stack.Screen name="+not-found" />
-      </Stack>
+      </Stack>      
     </ThemeProvider>
   );
 }
