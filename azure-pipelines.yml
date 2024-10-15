@@ -34,10 +34,18 @@ steps:
   env:
     EXPO_TOKEN: $(EXPO_TOKEN)
   
-  # 5. Publicar el APK como artefacto
-- task: PublishBuildArtifacts@1
+- task: DownloadPipelineArtifact@2
   inputs:
-    PathtoPublish: 'builds'  # Ruta del APK generado por EAS
-    ArtifactName: 'apk'
-    publishLocation: 'Container'
-  displayName: 'Publicar APK como artefacto'
+    buildType: "single"
+    artifactName: 'apk'
+    targetPath: '$(Build.SourcesDirectory)/builds'
+
+- task: AppCenterDistribute@3
+  inputs:
+    serverEndpoint: 'app-center'  # La conexión de servicio a App Center configurada en Azure DevOps
+    appSlug: 'ucompesar/React-Expo'  # Ajustar con el owner y el nombre de la app en App Center
+    symbolsOption: 'Android'
+    apk: '$(Build.SourcesDirectory)/builds/**/*.apk'  # Ruta del APK generado por EAS
+    releaseNotesOption: 'input'
+    releaseNotesInput: 'Nueva versión Android compilada desde Azure DevOps'
+    destinationType: 'groups'
