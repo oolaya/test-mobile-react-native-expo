@@ -18,21 +18,20 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+    npm install -g
+  displayName: 'npm install'
 
 - script: |
-    npm install -g expo-cli  # Instala Expo CLI
-    npm ci  # Instala las dependencias del proyecto
-  displayName: 'Instalar dependencias'
+    npm install -g eas-cli
+  displayName: 'expo'
+
 
 - script: |
-    expor login -u $(EXPO_USERNAME) -p $(EXPO_PASSWORD)
+    eas login -u $(EXPO_USERNAME) -p $(EXPO_PASSWORD)
   displayName: 'Inicio sesion en expo CLI'
 
 - script: |
-    expo build:android -t apk  # Compilar el APK
+    eas build -p android --profile production  # Compilar el APK
     displayName: 'Compilar APK de Android con Expo'
 
 - task: PublishBuildArtifacts@1
