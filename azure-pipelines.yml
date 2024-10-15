@@ -24,7 +24,7 @@ steps:
 
   # 3. Autenticarse en Expo con token (o con usuario y contraseña)
 - script: |
-      eas build --platform android --profile production --non-interactive
+      eas build --platform android
   displayName: 'Compilar APK de Android con EAS'
   env:
     EXPO_TOKEN: $(EXPO_TOKEN)
