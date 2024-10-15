@@ -24,15 +24,10 @@ steps:
 
   # 3. Autenticarse en Expo con token (o con usuario y contraseña)
 - script: |
-    eas login --token $(EXPO_TOKEN) 
-     displayName: 'Iniciar sesión en Expo con token'
-  env:
-    EXPO_TOKEN: $(EXPO_TOKEN)  # Token almacenado como variable secreta en Azure DevOps
-
-  # 4. Ejecutar la compilación de EAS para Android (usando el perfil de producción)
-- script: |
-     eas build --platform android --profile production --non-interactive
+      eas build --platform android --profile production --non-interactive
   displayName: 'Compilar APK de Android con EAS'
+  env:
+    EXPO_TOKEN: $(EXPO_TOKEN)
   
   # 5. Publicar el APK como artefacto
 - task: PublishBuildArtifacts@1
