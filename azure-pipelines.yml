@@ -25,7 +25,7 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
-    workingDir: '**/*_work/1/s'
+  displayName: 'Install NPM'
 
   # 3. Autenticarse en Expo con token (o con usuario y contraseña)
 - script: |
