@@ -19,12 +19,17 @@ steps:
 
 - script: |
     npm install -g eas-cli
-    npm i  
+    npm ci  
   displayName: 'Instalar dependencias y EAS CLI'
+  
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: '**/*_work/1/s'
 
   # 3. Autenticarse en Expo con token (o con usuario y contraseña)
 - script: |
-      eas build --platform android
+      eas build --platform android --profile production --non-interactive
   displayName: 'Compilar APK de Android con EAS'
   env:
     EXPO_TOKEN: $(EXPO_TOKEN)
