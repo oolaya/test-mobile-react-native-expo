@@ -18,14 +18,14 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install -g eas-cli  # Instala EAS CLI
-    npm ci  # Instala dependencias del proyecto
+    npm install -g eas-cli
+    npm ci  
   displayName: 'Instalar dependencias y EAS CLI'
 
   # 3. Autenticarse en Expo con token (o con usuario y contraseña)
 - script: |
-    eas login --token $(EXPO_TOKEN)  # Usar token Expo
-  displayName: 'Iniciar sesión en Expo con token'
+    eas login --token $(EXPO_TOKEN) 
+     displayName: 'Iniciar sesión en Expo con token'
   env:
     EXPO_TOKEN: $(EXPO_TOKEN)  # Token almacenado como variable secreta en Azure DevOps
 
