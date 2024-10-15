@@ -18,24 +18,26 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    npm install -g
-  displayName: 'npm install'
+    npm install -g eas-cli  # Instala EAS CLI
+    npm ci  # Instala dependencias del proyecto
+  displayName: 'Instalar dependencias y EAS CLI'
 
+  # 3. Autenticarse en Expo con token (o con usuario y contraseña)
 - script: |
-    npm install -g eas-cli
-  displayName: 'expo'
+    eas login --token $(EXPO_TOKEN)  # Usar token Expo
+  displayName: 'Iniciar sesión en Expo con token'
+  env:
+    EXPO_TOKEN: $(EXPO_TOKEN)  # Token almacenado como variable secreta en Azure DevOps
 
-
+  # 4. Ejecutar la compilación de EAS para Android (usando el perfil de producción)
 - script: |
-    eas login -u $(EXPO_USERNAME) -p $(EXPO_PASSWORD)
-  displayName: 'Inicio sesion en expo CLI'
-
-- script: |
-    eas build -p android --profile production  # Compilar el APK
-    displayName: 'Compilar APK de Android con Expo'
-
+     eas build --platform android --profile production --non-interactive
+  displayName: 'Compilar APK de Android con EAS'
+  
+  # 5. Publicar el APK como artefacto
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: './dist'  # Cambia esta ruta si necesitas que sea más específica
-    ArtifactName: 'apk'  # Nombre del artefacto publicado
-  displayName: 'Publicar el APK como artefacto'
+    PathtoPublish: 'builds'  # Ruta del APK generado por EAS
+    ArtifactName: 'apk'
+    publishLocation: 'Container'
+  displayName: 'Publicar APK como artefacto'
