@@ -19,7 +19,7 @@ steps:
 
 - script: |
     npm install -g eas-cli
-    npm ci  
+    npm i  
   displayName: 'Instalar dependencias y EAS CLI'
 
   # 3. Autenticarse en Expo con token (o con usuario y contraseña)
