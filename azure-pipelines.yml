@@ -7,7 +7,9 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: 'Default'  # Nombre del pool donde está tu agente autoalojado
+  demands:
+    - Agent.OS -equals Windows_NT
 
 steps:
 - task: NodeTool@0
