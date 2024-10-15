@@ -23,6 +23,11 @@ steps:
   displayName: 'npm install and build'
 
 - script: |
+    npm install -g expo-cli  # Instala Expo CLI
+    npm ci  # Instala las dependencias del proyecto
+  displayName: 'Instalar dependencias'
+
+- script: |
     expor login -u $(EXPO_USERNAME) -p $(EXPO_PASSWORD)
   displayName: 'Inicio sesion en expo CLI'
 
